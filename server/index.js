@@ -10,21 +10,13 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(
     cors({
-        origin: process.env.CLIENT_URL || "http://localhost:5000",
+        origin: process.env.CLIENT_URL || "https://portfolio-14-xi.vercel.app/",
         credentials: true,
     })
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use("/uploads", express.static("uploads"));
-// Serve the uploads folder statically
-// For ES modules (type: module)
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
 
-// // Serve the uploads folder statically
-// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use("/uploads", express.static("uploads"));
 
