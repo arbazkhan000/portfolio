@@ -1,5 +1,5 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa"; // Social icons
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa"; 
 
 const Footer = () => {
     return (
@@ -8,9 +8,7 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
                     {/* About Section */}
                     <div>
-                        <h3 className="text-lg font-semibold mb-2">
-                            About Me
-                        </h3>
+                        <h3 className="text-lg font-semibold mb-2">About Me</h3>
                         <p className="text-sm">
                             Mohd Arbaz | Frontend Engineer | Passionate about
                             creating responsive and user-friendly web
@@ -61,12 +59,10 @@ const Footer = () => {
 
                     {/* Social Media */}
                     <div>
-                        <h3 className="text-lg font-semibold  mb-2">
-                            Connect
-                        </h3>
+                        <h3 className="text-lg font-semibold  mb-2">Connect</h3>
                         <div className="flex justify-center md:justify-start space-x-4">
                             <a
-                                href="https://github.com/yourusername"
+                                href="https://github.com/arbazkhan000"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className=" hover:text-orange-500 transition-colors"
@@ -74,7 +70,7 @@ const Footer = () => {
                                 <FaGithub className="text-2xl" />
                             </a>
                             <a
-                                href="https://linkedin.com/in/yourusername"
+                                href="https://www.linkedin.com/in/arbaz-khan-469632258/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className=" hover:text-orange-500 transition-colors"
@@ -96,7 +92,7 @@ const Footer = () => {
                 {/* Copyright */}
                 <div className="mt-6 text-center border-t border-gray-700 pt-4">
                     <p className="text-sm">
-                        © {new Date().getFullYear()}  All rights reserved.
+                        © {new Date().getFullYear()} All rights reserved.
                     </p>
                 </div>
             </div>
