@@ -1,7 +1,9 @@
 import axios from "axios";
 
+
+// https://arbazportfolio-one.vercel.app/
 const axiosInstance = axios.create({
-    baseURL: "http://localhost:4000/api/v1",
+    baseURL: "https://arbazportfolio-one.vercel.app/api/v1",
 });
 
 export default axiosInstance;
