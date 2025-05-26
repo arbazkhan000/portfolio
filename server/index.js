@@ -29,12 +29,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("uploads"));
 
 //import routes
-import aboutRoutes from "./src/routes/aboutRoutes.js";
 import adminRoutes from "./src/routes/adminRoutes.js";
 import projectRoutes from "./src/routes/projectRoutes.js";
 
 // use Routes
-app.use("/api/v1/about", aboutRoutes);
 app.use("/api/v1/projects", projectRoutes);
 app.use("/api/v1/auth", adminRoutes);
 
