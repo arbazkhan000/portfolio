@@ -1,9 +1,7 @@
 import { useLocation } from "react-router-dom";
 
 const About = () => {
-    const location = useLocation();
-    console.log("About", location);
-
+    
     return (
         <div>
             <div className=" px-4 sm:px-6 md:px-10 py-8 md:py-12 w-full">
@@ -25,7 +23,7 @@ const About = () => {
                         <p className="text-center md:text-left text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed">
                             Mohd Arbaz
                             <br />
-                            Frontend Engineer | BCA (3rd Year) in Computer
+                            Full-Stack Developer | BCA (3rd Year) in Computer
                             Applications
                             <br />
                             Skilled in HTML, CSS, JavaScript, and React, with a

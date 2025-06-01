@@ -1,8 +1,11 @@
 import axios from "axios";
 
-// https://arbazportfolio-one.vercel.app/
+const baseURL = process.env.NODE_ENV === 'production' 
+    ? "https://portfolio-nvtm.vercel.app/api/v1"
+    : "http://localhost:5001/api/v1";
+
 const axiosInstance = axios.create({
-    baseURL: "https://arbazportfolio-one.vercel.app/api/v1",
+    baseURL,
 });
 
 export default axiosInstance;
