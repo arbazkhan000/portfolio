@@ -14,8 +14,6 @@ import { useLocation } from "react-router-dom";
 import { Tilt } from "react-tilt";
 
 const Service = () => {
-    const location = useLocation();
-    console.log("Service", location);
 
     const services = [
         {

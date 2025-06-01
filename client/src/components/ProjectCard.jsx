@@ -1,9 +1,8 @@
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
 const ProjectCard = ({ project }) => {
-    console.log("project", project);
     const imageUrl = project.image
-        ? `https://arbazportfolio-one.vercel.app/uploads/${project.image}`
+        ? `http://localhost:5001/uploads/${project.image}`
         : "/fallback-image.jpg";
     return (
         <div className="bg-[#D1D5DC] rounded-xl shadow-md overflow-hidden max-w-sm w-full">

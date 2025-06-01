@@ -2,9 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { ReactTyped } from "react-typed";
 
-const Hero = () => {
-    const location = useLocation();
-    console.log("Hero",location)
+const Hero = () => {   
     return (
         <div className="min-h-screen flex items-center justify-center flex-col px-4 sm:px-6 lg:px-8">
             {/* Main content */}
@@ -19,7 +17,7 @@ const Hero = () => {
                     <br className="hidden sm:inline" />
                     another{" "}
                     <i className="italic underline decoration-orange-500">
-                        frontend
+                        Full-Stack
                     </i>{" "}
                     developer.
                 </h1>
