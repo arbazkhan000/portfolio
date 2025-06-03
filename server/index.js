@@ -11,14 +11,11 @@ const PORT = process.env.PORT || 5000;
 
 const corsOptions = {
     origin: function (origin, callback) {
-       
         if (!origin) return callback(null, true);
-        
         const allowedOrigins = [
             'https://arbazconnect.vercel.app',
             'http://localhost:5173',
         ];
-        
         if (allowedOrigins.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
