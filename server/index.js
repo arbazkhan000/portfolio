@@ -1,12 +1,13 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import fs from "fs";
+import path from "path";
 import connectDB from "./src/config/db.js";
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
 
 const corsOptions = {
     origin: function (origin, callback) {
@@ -49,7 +50,21 @@ app.options('*', cors(corsOptions));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-app.use("/uploads", express.static("uploads"));
+// Only serve uploads directory if it exists (for local development)
+const uploadsPath = path.join(process.cwd(), "uploads");
+if (fs.existsSync(uploadsPath)) {
+    app.use("/uploads", express.static("uploads"));
+    console.log("Uploads directory found - serving static files");
+} else {
+    console.log("Uploads directory not found - skipping static file serving");
+    // Optional: Add a route to handle upload requests gracefully
+    app.get("/uploads/*", (req, res) => {
+        res.status(404).json({ 
+            error: "File not found", 
+            message: "Static file serving is not available in serverless environment" 
+        });
+    });
+}
 
 //import routes
 import adminRoutes from "./src/routes/adminRoutes.js";
@@ -82,19 +97,24 @@ app.get("/api/v1/cors-test", (req, res) => {
     });
 });
 
-// Start server after DB connection
-const ServerStart = async () => {
-    try {
-        await connectDB();
-        app.listen(PORT, () => {
-            console.log(`Server running on port ${PORT}`);
-            console.log(`CORS configured for: https://arbazconnect.vercel.app`);
-            console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-        });
-    } catch (error) {
-        console.error("Database connection failed:", error.message);
-        process.exit(1);
-    }
-};
+// Export the app for Vercel
+export default app;
 
-ServerStart();
+// Only start server in non-serverless environments
+if (!process.env.VERCEL) {
+    const ServerStart = async () => {
+        try {
+            await connectDB();
+            app.listen(PORT, () => {
+                console.log(`Server running on port ${PORT}`);
+                console.log(`CORS configured for: https://arbazconnect.vercel.app`);
+                console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+            });
+        } catch (error) {
+            console.error("Database connection failed:", error.message);
+            process.exit(1);
+        }
+    };
+    
+    ServerStart();
+}
